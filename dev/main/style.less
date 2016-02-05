@@ -66,6 +66,48 @@ COLOR SCHEME
 }
 
 
+
+
+/* Compass */
+#compass {
+  width: 380px;
+  height: 380px;
+  background-image:url('http://i.imgur.com/44nyA.jpg');
+  position: relative;
+     -webkit-transform:rotate(-45deg);
+  -moz-transform:rotate(90deg);
+  -o-transform:rotate(90deg);
+  -ms-transform:rotate(90deg);
+    
+}
+#arrow {
+  width: 160px;
+  height: 10px;
+  background-color:#F00;
+  position: absolute;
+  top: 190px;
+  left: 110px;
+  -webkit-transform:rotate(0deg);
+  -moz-transform:rotate(0deg);
+  -o-transform:rotate(0deg);
+  -ms-transform:rotate(0deg);
+
+  -moz-transition: all 1s ease;
+  -webkit-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
+}
+
+
+#compass:hover #arrow {
+  -webkit-transform:rotate(263deg);
+  -moz-transform:rotate(263deg);
+  -o-transform:rotate(263deg);
+  -ms-transform:rotate(263deg);
+}
+
+
+
 /* Animations */
 @keyframes slideIn {
     from    { opacity: 0;transform:translateY(20%); }
