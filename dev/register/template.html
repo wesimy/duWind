@@ -1,0 +1,107 @@
+<script type="text/ng-template" id="error-messages">
+    <div ng-message="required">Please enter this information</div>
+    <div ng-message="maxlength">This value is too long</div>
+    <div ng-message="minlength">This value is too short</div>
+    <p ng-message="email">Please enter a valid email</p>
+    <p ng-message="verify">Values doesn't match</p>
+</script>
+
+<!-- Register Page Content -->
+<div class="row">
+    <div class="container">
+        <div class="col-sm-12">
+            <h1>Register</h1>
+            <p class="lead">Create an account and get started today.</p>
+        </div>
+    </div>
+    <div class="container form-container">
+        <div class="col-sm-8">
+            <form class="clearfix" name="registrationform" data-ng-submit="Register(User)" >
+                
+                
+                <div class="form-group" ng-class="{ 'has-error': registrationform.forename.$touched && registrationform.forename.$invalid }">
+                    <label for="forename">Forename*</label>
+                    <input type="text" name="forename" class="form-control" id="forename" placeholder="Forename" data-ng-model="User.Forename" required ng-maxlength="100">
+                    <div ng-if="registrationform.forename.$touched" ng-messages="registrationform.forename.$error" role="alert">
+                        <div ng-messages-include="error-messages"></div>
+                    </div>
+
+                </div>
+                <div class="form-group" ng-class="{ 'has-error': registrationform.surname.$touched && registrationform.surname.$invalid }">
+                    <label for="surname">Surname*</label>
+                    <input type="text" name="surname" class="form-control" id="surname" placeholder="Surname" data-ng-model="User.Surname" required ng-maxlength="100">
+                    <div ng-messages="registrationform.surname.$touched && registrationform.surname.$error" role="alert">
+                        <div ng-messages-include="error-messages"></div>
+                    </div>
+                </div>
+                <div class="form-group" >
+                    <div class="row">
+                        <div class="col-sm-4" ng-class="{ 'has-error': registrationform.sex.$touched && registrationform.sex.$invalid }">
+                            <label for="sex">Sex*</label>
+                            <select name="sex" class="form-control" id="sex" data-ng-model="User.Sex" required>
+                                <option value="">Please Select</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                            <div ng-messages="registrationform.sex.$touched && registrationform.sex.$error" role="alert">
+                                <div ng-messages-include="error-messages"></div>
+                            </div>
+                        </div>
+                        <div class="col-sm-8" ng-class="{ 'has-error': registrationform.dob.$touched && registrationform.dob.$invalid }">
+                            <label for="dob">Date of birth*</label>
+                    <div class="form-group">
+    <div class="input-group">
+      <div class="input-group-addon"><i ng-click="focus = !focus" class="glyphicon glyphicon-calendar"></i></div>
+      <input type="date" uib-datepicker-popup datepicker-append-to-body="true" is-open="focus" name="dob" class="form-control" id="dob" placeholder="Date of birth" data-ng-model="User.DOB" required>
+      
+    </div>
+  </div>
+                            
+                        <div ng-messages="registrationform.dob.$touched && registrationform.dob.$error" role="alert">
+                            <div ng-messages-include="error-messages"></div>                        
+                        </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{ 'has-error': registrationform.email.$touched && registrationform.email.$invalid }">
+                    <label for="email">Email Address*</label>
+                    <input type="email" name="email" class="form-control" id="email" placeholder="Email address" data-ng-model="User.Email" required>
+                    <div ng-messages="registrationform.email.$touched && registrationform.email.$error" role="alert">
+                        <div ng-messages-include="error-messages"></div>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{ 'has-error': registrationform.verifyemail.$touched && registrationform.verifyemail.$invalid }">
+                    <label for="veryifyemail">Verify Email Address*
+                    </label>
+                    <input type="email" name="verifyemail" class="form-control" id="veryifyemail" placeholder="Veryify email address" data-ng-model="User.Verifyemail" required verify="{{User.Email}}">
+                    <div ng-messages="registrationform.verifyemail.$touched && registrationform.verifyemail.$error" role="alert">
+                        <div ng-messages-include="error-messages"></div>
+                    </div>
+                </div>
+
+                <div class="form-group" ng-class="{ 'has-error': registrationform.password.$touched && registrationform.password.$invalid }">
+                    
+                    
+                    
+                    <label for="password">Password</label>
+                    <input type="password" name="password" class="form-control" id="password" placeholder="Password" data-ng-model="User.Password" required ng-minlength="7" ng-maxlength="25" data-password-toggle>
+                    <p class="help-block">Use between 7 - 25 characters. At least one uppercase character. At least one number.
+                    </p>
+                    <div ng-messages="registrationform.password.$touched && registrationform.password.$error" role="alert">
+                        <div ng-messages-include="error-messages"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3 col-sm-offset-9">
+                        <button type="submit" class="btn btn-lg btn-primary btn-block ">Register</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <aside class="col-sm-4">
+            <p>Already a member ?</p>
+            <a href="#login" class="btn col-sm-12 btn-default">Login</a>
+        </aside>
+    </div>
+</div>
